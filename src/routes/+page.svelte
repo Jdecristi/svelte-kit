@@ -1,59 +1,33 @@
 <script>
-	import Counter from './Counter.svelte';
-	import welcome from '$lib/images/svelte-welcome.webp';
-	import welcome_fallback from '$lib/images/svelte-welcome.png';
+	import Chat from '../components/Chat.svelte';
 </script>
 
-<svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
-</svelte:head>
-
-<section>
-	<h1>
-		<span class="welcome">
-			<picture>
-				<source srcset={welcome} type="image/webp" />
-				<img src={welcome_fallback} alt="Welcome" />
-			</picture>
-		</span>
-
-		to your new<br />SvelteKit app
-	</h1>
-
-	<h2>
-		try editing <strong>src/routes/+page.svelte</strong>
-	</h2>
-
-	<Counter />
-</section>
+<main>
+	<div class="forground">
+		<Chat />
+	</div>
+	<img class="background" src="/background.png" alt="SHIB" />
+</main>
 
 <style>
-	section {
+	main {
+		height: 100vh;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
 		align-items: center;
-		flex: 0.6;
+		justify-content: center;
+		font-family: Arial, Helvetica, sans-serif;
+		background-color: #fbfcfc;
 	}
-
-	h1 {
-		width: 100%;
+	.forground {
+		z-index: 1;
 	}
-
-	.welcome {
-		display: block;
-		position: relative;
-		width: 100%;
-		height: 0;
-		padding: 0 0 calc(100% * 495 / 2048) 0;
-	}
-
-	.welcome img {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 0;
-		display: block;
+	.background {
+		position: fixed;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%) scale(1.75);
+		opacity: 0.1;
+		z-index: 0;
 	}
 </style>
